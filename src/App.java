@@ -1,4 +1,13 @@
 import java.nio.channels.ScatteringByteChannel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 //import java.util.Scanner;
@@ -157,10 +166,57 @@ public class App {
 //   JOptionPane.showMessageDialog(null, "No es palindromo");  
 // }
 
-String input = JOptionPane.showInputDialog("Ingrese una frase");
-JOptionPane.showMessageDialog(null, contPalabras(input));
+// String input = JOptionPane.showInputDialog("Ingrese una frase");
+// JOptionPane.showMessageDialog(null, contPalabras(input));
 
 
+// String input = JOptionPane.showInputDialog("Ingrese una frase");
+// String input2 = JOptionPane.showInputDialog("Ingrese una letra a reemplazar");
+// String input3 = JOptionPane.showInputDialog("Ingrese una letra de reemplazo");
+
+// JOptionPane.showMessageDialog(null,replaceLetra(input, input2, input3));
+
+// String input = JOptionPane.showInputDialog("Ingrese una frase");
+// separadorCadena(input);
+
+
+// String input = JOptionPane.showInputDialog("Ingrese una frase");
+
+// JOptionPane.showMessageDialog(null,contadorFrases(input));
+
+// String input = JOptionPane.showInputDialog("Ingrese una frase");
+// JOptionPane.showMessageDialog(null,ordenarCadena(input) );
+
+//sumaArray();
+
+//numMayor();
+
+//deleteRepetidos();
+
+// int arreglo[] = {1, 9, 23, 4, 55, 100, 1, 1, 23};
+// arregoBurbuja(arreglo);
+
+// System.out.println(Arrays.toString(arreglo));
+
+//buscadorNum();
+
+//frecuencia();
+
+// int[] arr = { 1, 2, 3, 4, 5 };
+// int r = 3;
+// rotDerecha(arr, r);
+
+// System.out.println(Arrays.toString(arr));
+
+// int[] A = { 1, 2, 3, 4, 5, 6, 7 };
+// int k = 3;
+
+// rotIzquierda(A, k);
+
+// System.out.println(Arrays.toString(A));
+
+
+tablasMatriz();
  }
 
 
@@ -458,6 +514,208 @@ public static int contPalabras(String frase){
 
   return cont;
 }
+
+//ejercicio 24
+
+
+public static String replaceLetra(String frase, String letra, String newLetra){
+  String mm = "";
+  for(int i=0; i< frase.length(); i++){
+    String nn = "";
+    nn = frase.charAt(i) + nn;
+
+    if(nn.equalsIgnoreCase(letra)){
+       mm += newLetra;
+    }else{
+      mm += nn;
+    }
+    
+    
+    }
+    return mm;
+    //System.out.println(frase); 
+    //System.out.println(mm);
+}
+
+//ejercicio 25 
+
+public static void separadorCadena(String frase){
+String[] separados = frase.split("\\s");
+
+System.out.println(Arrays.toString(separados));
+
+}
+// ejercicio 26
+public static int contadorFrases(String frase){
+    
+    String fraseSE = frase.replaceAll("\\s","");
+    int count = fraseSE.length();
+    
+    return count;
+    
+}
+
+//ejercicio 27
+
+public static String ordenarCadena(String cadena){
+String[] separados = cadena.split("\\s");
+System.out.println(Arrays.toString(separados));
+
+
+Arrays.sort(separados);
+
+String arrayToString = String.join(" ", separados);
+
+return arrayToString;
+}
+
+// ejercicio 28
+
+public static void sumaArray(){
+int[] myNum = {10, 20, 30, 40};
+int cont = 0;
+for(int i = 0; i < myNum.length; i++){
+    cont += myNum[i];
+   // System.out.println(myNum[i]);
+}
+System.out.println(cont);
+}
+
+// ejercicio 29
+public static void numMayor(){
+    int[] myNum = {10, 50,20, 30, 40};
+    int numM = 0;
+   //System.out.println(Math.max(5, 7));
+   for(int i = 0; i < myNum.length; i++){
+
+      numM = Math.max(numM, myNum[i])  ;
+   }
+   System.out.println(numM);
 }
 
 
+//ejercicio 30
+public static LinkedHashSet<Integer> deleteRepetidos(int[] myNum){
+//int[] myNum = {10, 50,20, 30, 40,10, 50,20, 30, 40};
+
+LinkedHashSet<Integer> sRepeat = new LinkedHashSet<Integer>();
+
+ for(int i = 0; i < myNum.length; i++){
+    sRepeat.add(myNum[i]);
+    
+   
+ }
+
+ 
+
+return sRepeat;
+
+}
+
+//ejercicio 31 
+public static void arregoBurbuja(int[] arreglo){
+    
+    for(int i = 0; i < arreglo.length; i++){
+       
+        for(int j = 0; j < arreglo.length -1; j++){
+            int elActual = arreglo[j];
+            int elSig = arreglo[j + 1];
+
+            if (elActual > elSig) {
+               
+                arreglo[j] = elSig;
+                arreglo[j + 1] = elActual;
+            }
+            
+        }
+    }
+
+}
+ //ejercicio 32
+
+ public static void buscadorNum(){
+  int[] myNum = {10, 50,20, 30, 40};
+  boolean msg = false;
+  int num = 0;
+  int num2 = 40;
+  for(int i = 0; i < myNum.length; i++){
+      if(myNum[i] == num2){
+        msg = true;
+         num = i;
+      }
+  }
+ if(msg){
+   System.out.println("Si se encuentra en la posicion: " + num);
+ }else{
+    System.out.println("El numero no esta en el arreglo");
+ }
+ } 
+
+ //ejercicio 33
+
+ public static void frecuencia(){
+    int[] casoDePrueba = { 0, 2, 2, 3, 4, 5, 7, 5, 8, 4, 8, 6, 4, 2, 1, 4, 7, 8 };
+    Map<Integer, Integer> ocurrencias = new HashMap<>();
+    for (int i : casoDePrueba) {
+        ocurrencias.merge(i, 1, Integer::sum);
+    }
+    
+    ocurrencias.forEach((a, b) -> System.out.println("(" + a + ", " + b + ")"));
+ }
+
+ // ejercicio 34
+
+//para girar a la izquierda
+
+public static void leftRotateByOne(int[] arr)
+    {
+        int first = arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+ 
+        arr[arr.length - 1] = first;
+    }
+
+
+public static void rotIzquierda(int[] arr, int r){
+    for (int i = 0; i < r; i++) {
+        leftRotateByOne(arr);
+    }
+
+
+}
+
+// rotacion derecha
+
+public static void rightRotateByOne(int[] A)
+{
+    int last = A[A.length - 1];
+    for (int i = A.length - 2; i >= 0; i--) {
+        A[i + 1] = A[i];
+    }
+
+    A[0] = last;
+}
+
+public static void rotDerecha(int[] A, int k){
+    for (int i = 0; i < k; i++) {
+        rightRotateByOne(A);
+    }
+}
+
+// ejercicio 35
+
+public  static void tablasMatriz(){
+    for (int i = 1; i <= 10; i++) {
+        String table = "Multiplication table of " + i + ":\n";
+        for (int j = 1; j <= 10; j++) {
+            int result = i * j;
+            table += i + " x " + j + " = " + result + "\n";
+        }
+        System.out.println(table);
+        //JOptionPane.showMessageDialog(null, table, "RESULTS ", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+}
+}
